@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "695844885678",
+    "project_id": "ntc-mobile-app-b21e0",
+    "storage_bucket": "ntc-mobile-app-b21e0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695844885678:android:86bef14d0e12494cc3c93f",
+        "android_client_info": {
+          "package_name": "com.ntc.mobileapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaZBRzdBrq2haxcJnfzfuv4fGtoRlGUUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
