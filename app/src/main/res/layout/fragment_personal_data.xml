@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_container_background"
+        android:padding="16dp"
+        android:elevation="2dp">
+
+        <!-- Student ID -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Id No.:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/studentIdInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Enrollment Status -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enrollment Status:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/enrollmentStatusInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Entry Course/Program -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entry Course/Program:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/entryProgramInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Entry Level -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entry Level:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/entryLevelInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Student Batch -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Batch:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/studentBatchInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Student Entry Sem -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Entry Sem:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/studentEntrySemInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Student Classification -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Classification:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/studentClassificationInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Surname -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Surname:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/surnameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- First Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/firstNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Middle Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Middle Name:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/middleNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Sex -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sex:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/sexInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Province Origin -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Province Origin:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/provinceOriginInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Nationality -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nationality:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/nationalityInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Religion -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Religion:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/religionInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Date of Birth -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/dateOfBirthInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Place of Birth -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place of Birth:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/placeOfBirthInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Civil Status -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Civil Status:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/civilStatusInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- LRN -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LRN:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/lrnInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- ESC -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ESC:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/escInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Mother Tongue -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mother Tongue:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/motherTongueInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Ethnic Group -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ethnic Group:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/ethnicGroupInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+</ScrollView> 

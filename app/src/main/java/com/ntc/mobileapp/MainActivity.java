@@ -1,5 +1,6 @@
 package com.ntc.mobileapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -56,8 +57,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (isValid) {
-            // TODO: Implement actual login logic here
-            Toast.makeText(this, "Logging in...", Toast.LENGTH_SHORT).show();
+            // TODO: Add actual authentication logic here
+            // For now, we'll just proceed to the home page
+            Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+            
+            // Navigate to HomeActivity
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish(); // Close MainActivity so user can't go back
         }
     }
 

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_container_background"
+        android:padding="16dp"
+        android:elevation="2dp">
+
+        <!-- Mobile Phone No. -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Phone No.:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/mobilePhoneInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- E-mail address -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-mail address:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/emailAddressInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Postal Address -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Postal Address:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/postalAddressInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Residential Address -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Residential Address:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/residentialAddressInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Guardian -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardian:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/guardianInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Guardian Job -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardian Job:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/guardianJobInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+</ScrollView> 

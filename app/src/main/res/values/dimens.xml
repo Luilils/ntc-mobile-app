@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Schedule dimensions -->
+    <dimen name="time_column_width">100dp</dimen>
+    <dimen name="schedule_column_width">200dp</dimen>
+    <dimen name="time_slot_height">80dp</dimen>
+    <dimen name="time_slot_margin">1dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+</resources> 

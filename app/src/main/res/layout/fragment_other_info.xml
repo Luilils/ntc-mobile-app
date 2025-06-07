@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_container_background"
+        android:padding="16dp"
+        android:elevation="2dp">
+
+        <!-- Disability -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disability:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/disabilityInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Indigenous Group -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indigenous Group:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/indigenousGroupInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Voucher Type -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voucher Type:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/voucherTypeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Scholarship Type -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scholarship Type:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/scholarshipTypeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+</ScrollView> 
