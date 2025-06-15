@@ -2,15 +2,22 @@ package com.ntc.mobileapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ntc.mobileapp.adapters.PersonalDataPagerAdapter;
+import com.ntc.mobileapp.models.PersonalData;
 
 public class PersonalDataActivity extends AppCompatActivity {
     private ImageButton navHome, navSchedule, navPersonalData, navStudentEval, 
@@ -20,15 +27,25 @@ public class PersonalDataActivity extends AppCompatActivity {
     private TextView greetingText, sectionText;
     private PersonalDataPagerAdapter pagerAdapter;
 
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private PersonalData personalData;
+
+    private static final String TAG = "PersonalDataActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_data);
 
+        // Initialize Firebase
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
         initializeViews();
         setupNavigationListeners();
         setupTabs();
-        loadUserInfo();
+        loadPersonalDataFromFirestore();
     }
 
     private void initializeViews() {
@@ -51,35 +68,13 @@ public class PersonalDataActivity extends AppCompatActivity {
     }
 
     private void setupNavigationListeners() {
-        navHome.setOnClickListener(v -> {
-            startActivity(new Intent(this, HomeActivity.class));
-            finish();
-        });
-
-        navSchedule.setOnClickListener(v -> {
-            startActivity(new Intent(this, ScheduleActivity.class));
-            finish();
-        });
-
-        navPersonalData.setOnClickListener(v -> {
-            // Already in PersonalDataActivity
-        });
-
-        navStudentEval.setOnClickListener(v -> {
-            // TODO: Implement Student Evaluation navigation
-        });
-
-        navTeacherEval.setOnClickListener(v -> {
-            // TODO: Implement Teacher Evaluation navigation
-        });
-
-        navAccountReceivable.setOnClickListener(v -> {
-            // TODO: Implement Account Receivable navigation
-        });
-
-        navChangePassword.setOnClickListener(v -> {
-            // TODO: Implement Change Password navigation
-        });
+        navHome.setOnClickListener(v -> handleNavigation("home"));
+        navSchedule.setOnClickListener(v -> handleNavigation("schedule"));
+        navPersonalData.setOnClickListener(v -> handleNavigation("personal_data"));
+        navStudentEval.setOnClickListener(v -> handleNavigation("student_eval"));
+        navTeacherEval.setOnClickListener(v -> handleNavigation("teacher_eval"));
+        navAccountReceivable.setOnClickListener(v -> handleNavigation("account_receivable"));
+        navChangePassword.setOnClickListener(v -> handleNavigation("change_password"));
     }
 
     private void setupTabs() {
@@ -172,10 +167,90 @@ public class PersonalDataActivity extends AppCompatActivity {
         }
     }
 
-    private void loadUserInfo() {
-        // TODO: Load user info from database
-        // For now using placeholder data
-        greetingText.setText("Hi, Israel Andy");
-        sectionText.setText("BSIT 2-2");
+    private void loadPersonalDataFromFirestore() {
+        Log.d(TAG, "loadPersonalDataFromFirestore: called");
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+            Log.d(TAG, "loadPersonalDataFromFirestore: Current user ID: " + userId);
+            db.collection("users").document(userId)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            Log.d(TAG, "loadPersonalDataFromFirestore: Document found for user: " + userId);
+                            personalData = document.toObject(PersonalData.class);
+                            if (personalData != null) {
+                                Log.d(TAG, "loadPersonalDataFromFirestore: PersonalData object created successfully.");
+                                // Update header text views
+                                greetingText.setText("Hi, " + (personalData.getFullName() != null ? personalData.getFullName().split("\\s+")[0] : "User"));
+                                sectionText.setText(personalData.getCourseAndSection());
+
+                                // Pass data to pager adapter
+                                if (pagerAdapter != null) {
+                                    Log.d(TAG, "loadPersonalDataFromFirestore: Passing data to pager adapter.");
+                                    pagerAdapter.updatePersonalData(personalData);
+                                }
+                            } else {
+                                Log.e(TAG, "PersonalData object is null after conversion");
+                                Toast.makeText(this, "Failed to parse personal data.", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Log.d(TAG, "loadPersonalDataFromFirestore: No such document for user: " + userId);
+                            Toast.makeText(this, "Personal data not found.", Toast.LENGTH_SHORT).show();
+                            // Optionally, navigate to a profile creation page or show a message
+                            // For now, keep placeholder or empty fields
+                            greetingText.setText("Hi, User");
+                            sectionText.setText("N/A");
+                        }
+                    } else {
+                        Log.e(TAG, "Failed to load personal data: ", task.getException());
+                        Toast.makeText(this, "Error loading personal data.", Toast.LENGTH_SHORT).show();
+                        // For now, keep placeholder or empty fields
+                        greetingText.setText("Hi, User");
+                        sectionText.setText("N/A");
+                    }
+                });
+        } else {
+            // User is not logged in, handle this case (e.g., redirect to login)
+            Log.d(TAG, "loadPersonalDataFromFirestore: User not logged in.");
+            Toast.makeText(this, "Please log in to view personal data.", Toast.LENGTH_SHORT).show();
+            // Redirect to login or show an appropriate message
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+    }
+
+    private void handleNavigation(String destination) {
+        switch (destination) {
+            case "home":
+                startActivity(new Intent(this, HomeActivity.class));
+                finish();
+                break;
+            case "schedule":
+                startActivity(new Intent(this, ScheduleActivity.class));
+                finish();
+                break;
+            case "personal_data":
+                // Already on personal data
+                break;
+            case "student_eval":
+                startActivity(new Intent(this, StudentEvaluationActivity.class));
+                finish();
+                break;
+            case "teacher_eval":
+                startActivity(new Intent(this, TeacherEvaluationActivity.class));
+                finish();
+                break;
+            case "account_receivable":
+                startActivity(new Intent(this, AccountReceivableActivity.class));
+                finish();
+                break;
+            case "change_password":
+                startActivity(new Intent(this, ChangePasswordActivity.class));
+                finish();
+                break;
+        }
     }
 } 

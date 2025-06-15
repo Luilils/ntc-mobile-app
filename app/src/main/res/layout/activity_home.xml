@@ -33,17 +33,6 @@
                     android:adjustViewBounds="true"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-                <ImageButton
-                    android:id="@+id/homeButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/home"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Home"
-                    android:padding="12dp"
-                    android:layout_margin="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Torn Paper Edge After Header -->
@@ -200,106 +189,94 @@
     </androidx.core.widget.NestedScrollView>
 
     <!-- Bottom Navigation -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottomNavigationContainer"
+    <LinearLayout
+        android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:paddingBottom="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="8dp"
         android:layout_gravity="bottom"
-        app:cardElevation="8dp">
+        android:gravity="center">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:weightSum="7">
+        <ImageButton
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/home"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Home" />
 
-            <ImageButton
-                android:id="@+id/nav_home"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/home"
-                android:scaleType="centerInside"
-                android:padding="12dp"
-                android:adjustViewBounds="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Home" />
+        <ImageButton
+            android:id="@+id/nav_schedule"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/schedule"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Schedule" />
 
-            <ImageButton
-                android:id="@+id/nav_schedule"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/schedule"
-                android:scaleType="centerInside"
-                android:padding="12dp"
-                android:adjustViewBounds="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Schedule" />
+        <ImageButton
+            android:id="@+id/nav_personal_data"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/personal_data"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Personal Data" />
 
-            <ImageButton
-                android:id="@+id/nav_personal_data"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/personal_data"
-                android:scaleType="centerInside"
-                android:padding="12dp"
-                android:adjustViewBounds="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Personal Data" />
+        <ImageButton
+            android:id="@+id/nav_student_eval"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/student_evaluation_report"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Student Evaluation" />
 
-            <ImageButton
-                android:id="@+id/nav_student_eval"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/student_evaluation_report"
-                android:scaleType="centerInside"
-                android:padding="12dp"
-                android:adjustViewBounds="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Student Evaluation Report" />
+        <ImageButton
+            android:id="@+id/nav_teacher_eval"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/teacher_evaluation_report"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Teacher Evaluation" />
 
-            <ImageButton
-                android:id="@+id/nav_teacher_eval"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/teacher_evaluation_report"
-                android:scaleType="centerInside"
-                android:padding="12dp"
-                android:adjustViewBounds="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Teacher Evaluation Report" />
+        <ImageButton
+            android:id="@+id/nav_account_receivable"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/account_receivable"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Account Receivable" />
 
-            <ImageButton
-                android:id="@+id/nav_account_receivable"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/account_receivable"
-                android:scaleType="centerInside"
-                android:padding="12dp"
-                android:adjustViewBounds="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Account Receivable" />
-
-            <ImageButton
-                android:id="@+id/nav_change_password"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/change_password"
-                android:scaleType="centerInside"
-                android:padding="12dp"
-                android:adjustViewBounds="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Change Password" />
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+        <ImageButton
+            android:id="@+id/nav_change_password"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/change_password"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="Change Password" />
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout> 

@@ -76,5 +76,117 @@
             android:enabled="false"
             android:background="@android:color/transparent"/>
 
+        <!-- Medical Conditions -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medical Conditions:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/medicalConditionsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Allergies -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Allergies:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/allergiesInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Medications -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medications:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/medicationsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Hobbies -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hobbies:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/hobbiesInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Talents -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Talents:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/talentsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Awards Achieved -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Awards Achieved:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/awardsAchievedInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
+        <!-- Organizations Joined -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Organizations Joined:"
+            android:textColor="#666666"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/organizationsJoinedInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:enabled="false"
+            android:background="@android:color/transparent"/>
+
     </LinearLayout>
 </ScrollView> 

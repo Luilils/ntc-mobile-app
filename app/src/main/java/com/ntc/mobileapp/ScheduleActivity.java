@@ -176,23 +176,33 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void handleNavigation(String destination) {
-        // TODO: Implement navigation to other sections
-        // This will be implemented as we create each section
         switch (destination) {
+            case "home":
+                startActivity(new Intent(this, HomeActivity.class));
+                finish();
+                break;
+            case "schedule":
+                // Already on schedule
+                break;
             case "personal_data":
-                // Navigate to personal data
+                startActivity(new Intent(this, PersonalDataActivity.class));
+                finish();
                 break;
             case "student_eval":
-                // Navigate to student evaluation
+                startActivity(new Intent(this, StudentEvaluationActivity.class));
+                finish();
                 break;
             case "teacher_eval":
-                // Navigate to teacher evaluation
+                startActivity(new Intent(this, TeacherEvaluationActivity.class));
+                finish();
                 break;
             case "account_receivable":
-                // Navigate to account receivable
+                startActivity(new Intent(this, AccountReceivableActivity.class));
+                finish();
                 break;
             case "change_password":
-                // Navigate to change password
+                startActivity(new Intent(this, ChangePasswordActivity.class));
+                finish();
                 break;
         }
     }

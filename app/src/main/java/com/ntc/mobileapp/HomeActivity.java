@@ -170,16 +170,20 @@ public class HomeActivity extends AppCompatActivity {
                 finish();
                 break;
             case "student_eval":
-                // Navigate to student evaluation
+                startActivity(new Intent(this, StudentEvaluationActivity.class));
+                finish();
                 break;
             case "teacher_eval":
-                // Navigate to teacher evaluation
+                startActivity(new Intent(this, TeacherEvaluationActivity.class));
+                finish();
                 break;
             case "account_receivable":
-                // Navigate to account receivable
+                startActivity(new Intent(this, AccountReceivableActivity.class));
+                finish();
                 break;
             case "change_password":
-                // Navigate to change password
+                startActivity(new Intent(this, ChangePasswordActivity.class));
+                finish();
                 break;
         }
     }
