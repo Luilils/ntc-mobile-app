@@ -2,18 +2,23 @@ package com.ntc.mobileapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ntc.mobileapp.adapters.CourseAdapter;
 import com.ntc.mobileapp.models.CourseEntry;
 import com.ntc.mobileapp.dialogs.TeacherEvaluationFormDialog;
@@ -27,6 +32,7 @@ public class TeacherEvaluationActivity extends AppCompatActivity
         implements CourseAdapter.OnInstructorClickListener,
         TeacherEvaluationFormDialog.TeacherEvaluationListener {
 
+    private static final String TAG = "TeacherEvaluationActivity";
     private ImageButton navHome, navSchedule, navPersonalData, navStudentEval,
             navTeacherEval, navAccountReceivable, navChangePassword;
     private ImageView profileImageView;
@@ -41,10 +47,19 @@ public class TeacherEvaluationActivity extends AppCompatActivity
     private RecyclerView courseRecyclerView;
     private CourseAdapter courseAdapter;
 
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_evaluation);
+
+        // Initialize Firebase instances
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
 
         initializeViews();
         setupNavigationListeners();
@@ -120,9 +135,33 @@ public class TeacherEvaluationActivity extends AppCompatActivity
     }
 
     private void loadStudentInfo() {
-        profileImageView.setImageResource(R.drawable.profile_template);
-        studentNameText.setText("Israel Andy T. Maliwat");
-        courseText.setText("BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY");
+        if (currentUser == null) {
+            Toast.makeText(this, "Please log in to view student information", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        db.collection("users").document(currentUser.getUid())
+            .get()
+            .addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot.exists()) {
+                    String name = documentSnapshot.getString("name");
+                    String course = documentSnapshot.getString("course");
+
+                    Log.d(TAG, "Fetched User Name: " + (name != null ? name : "null"));
+                    Log.d(TAG, "Fetched User Course: " + (course != null ? course : "null"));
+
+                    profileImageView.setImageResource(R.drawable.profile_template);
+                    studentNameText.setText(name != null ? name : "Name not set");
+                    courseText.setText(course != null ? course : "Course not set");
+                } else {
+                    Log.d(TAG, "No such user document for UID: " + currentUser.getUid());
+                    Toast.makeText(this, "User profile not found", Toast.LENGTH_SHORT).show();
+                }
+            })
+            .addOnFailureListener(e -> {
+                Log.e(TAG, "Error loading student info", e);
+                Toast.makeText(this, "Error loading student information", Toast.LENGTH_SHORT).show();
+            });
     }
 
     private void setupYearSpinner() {
@@ -200,7 +239,21 @@ public class TeacherEvaluationActivity extends AppCompatActivity
     @Override
     public void onSubmitEvaluation(String instructorName, int[] ratings, String comment) {
         // Handle the submitted evaluation data (e.g., send to server, save locally)
+        Toast.makeText(this, "Evaluation submitted for " + instructorName, Toast.LENGTH_SHORT).show();
+        // Optionally, show the AcceptFormDialog
         AcceptFormDialog acceptDialog = new AcceptFormDialog();
         acceptDialog.show(getSupportFragmentManager(), "AcceptFormDialog");
+
+        // You can add your logic here to save the evaluation data to Firestore
+        // For example:
+        // Map<String, Object> evaluation = new HashMap<>();
+        // evaluation.put("instructorName", instructorName);
+        // evaluation.put("ratings", Arrays.toString(ratings));
+        // evaluation.put("comment", comment);
+        // evaluation.put("timestamp", FieldValue.serverTimestamp());
+        // db.collection("evaluations").add(evaluation);
+
+        // Refresh the course list if needed
+        loadCourseData();
     }
 } 

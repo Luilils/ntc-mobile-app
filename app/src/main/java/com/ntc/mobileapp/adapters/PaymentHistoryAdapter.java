@@ -1,5 +1,6 @@
 package com.ntc.mobileapp.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentHistoryAdapter extends RecyclerView.Adapter<PaymentHistoryAdapter.PaymentViewHolder> {
+    private static final String TAG = "PaymentHistoryAdapter";
     private List<PaymentEntry> payments = new ArrayList<>();
 
     @NonNull
@@ -53,6 +55,7 @@ public class PaymentHistoryAdapter extends RecyclerView.Adapter<PaymentHistoryAd
         }
 
         public void bind(PaymentEntry payment) {
+            Log.d(TAG, "Binding payment - Date: " + payment.getDate() + ", Description: " + payment.getDescription());
             dateText.setText(payment.getDate());
             amountText.setText(payment.getAmount());
             descriptionText.setText(payment.getDescription());

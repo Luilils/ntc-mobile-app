@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton loginButton;
     private View forgotPasswordText;
     private FirebaseAuth mAuth;
+    private FirebaseAnalytics mFirebaseAnalytics;
     private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+        
+        // Initialize Firebase Analytics
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         // Set up auth state listener
         authStateListener = firebaseAuth -> {
@@ -37,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
             if (user != null) {
                 // User is signed in
                 Log.d(TAG, "onAuthStateChanged: signed_in: " + user.getUid());
+                
+                // Log login event
+                Bundle params = new Bundle();
+                params.putString(FirebaseAnalytics.Param.METHOD, "email");
+                params.putString("user_id", user.getUid());
+                mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, params);
+                Log.d(TAG, "Login event logged to Firebase Analytics");
             } else {
                 // User is signed out
                 Log.d(TAG, "onAuthStateChanged: signed_out");
